@@ -1,0 +1,6 @@
+{
+  "_catatan": "Diubah saat demo tanpa restart. Mis. set jamMulai/jamSelesai di luar jam sekarang untuk memicu DENY.",
+  "jamMulai": 7,
+  "jamSelesai": 21,
+  "zonaWaktu": "Asia/Jakarta"
+}
