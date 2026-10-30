@@ -78,25 +78,6 @@ Jam akses diatur di `config/policy.json` (`jamMulai`, `jamSelesai`, `zonaWaktu`)
 - **Finalisasi aman dari kegagalan sebagian:** nilai baru ditandai final **setelah** sinkron transkrip sukses; sinkron idempoten sehingga aman diulang.
 - Password & client secret di-hash `scrypt`; perbandingan gateway secret waktu-konstan.
 
-## Peta kode untuk video demo (bagian 4 soal)
-
-| Kebutuhan | Lokasi kode |
-|---|---|
-| 4.1 Access token JWT 10 menit (`sub`, `role`) | `gateway/auth.js` → `issueAccess` (baris 41) |
-| 4.1 Refresh token 1 hari di DB, dapat dicabut | `gateway/auth.js` → `issueRefresh` (34), `/refresh` (62), `/logout` (85) |
-| 4.1 Token service 5 menit, `role: service` | `gateway/auth.js` → `/service` (99); dipakai di `service-nilai/index.js` → `tokenService` (23) |
-| 4.1 Gateway menambah `X-Gateway-Secret` | `gateway/index.js` → `proxyReq` (25) |
-| 4.1 Service menolak tanpa secret | `shared/serviceGuard.js` (13) |
-| 4.1 Verifikasi ulang tanda tangan & masa berlaku di service | `shared/serviceGuard.js` (19) |
-| 4.2 Tabel kebijakan (Tabel 3) | `gateway/policy.js` → `ROUTES` (38) |
-| 4.2 Keputusan allow/deny + alasan, default deny | `gateway/policy.js` → `decide` (82, default deny di 89) |
-| 4.2 Kepemilikan data dibaca dari DB (bukan dari token) | `gateway/policy.js` → `q.*` dan `check()` tiap rute |
-| 4.2 PEP: setiap request dicegat | `gateway/index.js` (39–52) |
-| 4.2 Panggilan antar-service via gateway | `service-nilai/index.js` (73) |
-| 4.3 Device terdaftar (`X-Device-ID`) | `gateway/policy.js` (111–112) |
-| 4.3 Jam akses 07.00–21.00, dapat dikonfigurasi | `gateway/policy.js` → `dalamJamAkses` (17); `config/policy.json` |
-| 4.4 Audit log | `gateway/audit.js`; dipanggil di `gateway/index.js` (50) dan `gateway/auth.js` (`log`) |
-
 ## Struktur
 
 ```
