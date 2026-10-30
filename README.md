@@ -57,15 +57,6 @@ curl -s -X PUT localhost:3000/nilai/1 -H "Authorization: Bearer $TOKEN" -H 'X-De
 curl -s -X POST localhost:3000/kelas/1/finalisasi -H "Authorization: Bearer $TOKEN" -H 'X-Device-ID: DEV-DOSEN1-LAPTOP'
 ```
 
-## Postman
-
-1. Jalankan `npm start`.
-2. Postman → **Import** → pilih `postman/zero-trust-nilai.postman_collection.json`.
-3. Jalankan folder **0. Login** dulu: token tersimpan otomatis ke variabel koleksi (`dosen1_token`, dll.).
-4. Jalankan folder lain satu per satu. Nama request memuat status yang diharapkan, mis. `[harus 403]`; tab *Test Results* hijau bila pertahanan bekerja.
-5. Reset data bila perlu mengulang dari awal: `npm run reset`.
-
-Jam akses diatur di `config/policy.json` (`jamMulai`, `jamSelesai`, `zonaWaktu`), dibaca ulang **setiap request** tanpa restart. Untuk demo "di luar jam", ubah angkanya, simpan, coba lagi.
 
 ## Keputusan desain yang membedakan implementasi ini
 
